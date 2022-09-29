@@ -68,7 +68,7 @@ module.exports = {
   },
   resolve: {
     // extenciones que soporta la compilacion
-    extensions: ['.js', 'jsx'],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
