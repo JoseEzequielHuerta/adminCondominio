@@ -1,5 +1,12 @@
 import React from 'react';
+import Formulario from '../../Components/Formulario';
+import './index.css';
 
-const index = () => <div>Login</div>;
+const index = () => (
+  <div className="login-div">
+    <div>Login</div>
+    <Formulario />
+  </div>
+);
 
 export default index;
