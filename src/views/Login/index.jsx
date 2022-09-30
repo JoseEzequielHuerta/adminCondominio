@@ -4,7 +4,6 @@ import './index.css';
 
 const index = () => (
   <div className="login-div">
-    <div>Login</div>
     <Formulario />
   </div>
 );
