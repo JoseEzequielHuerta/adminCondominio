@@ -62,8 +62,7 @@ const index = () => {
     });
   };
 
-  const onSubmit = () => {
-  };
+  const onSubmit = () => {};
 
   return (
     <Grid container component="main" className={classes.root}>
