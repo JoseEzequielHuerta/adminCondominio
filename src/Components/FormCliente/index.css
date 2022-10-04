@@ -1,0 +1,25 @@
+.container-nuevo-cliente{
+    padding:15px ;
+  }
+  
+  .container-inputs-cliente{
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 25px;
+  }
+  
+  #summary{
+    display: none;
+  }
+  
+  .css-1elwnq4-MuiPaper-root-MuiAccordion-root{
+    border: 1px solid #E5E5E5 !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+  }
+  
+  .view-nuevo-cliente{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
