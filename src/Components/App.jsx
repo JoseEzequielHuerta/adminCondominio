@@ -4,8 +4,8 @@ import Inicio from '../views/Inicio';
 import Login from '../views/Login';
 import Residente from '../views/Residente';
 import Clientes from '../views/Clientes';
-import Desarrollo from '../views/Desarrollo'
-import Propiedades from '../views/Propiedades'
+import Desarrollo from '../views/Desarrollo';
+import Propiedades from '../views/Propiedades';
 
 const App = () => (
   <Routes>
