@@ -20,12 +20,15 @@ const index = ({val}) => {
     }
     
 return(
-    <Box sx={{borderBottom:1, borderColor:'divider'}}>
+    <Box>
+        <h2>Centro de cuentas</h2>
+        <Box sx={{borderBottom:1, borderColor:'divider'}}>
         <Tabs value={value} onChange={handleChange}>
             <Tab label="Clientes"/>
             <Tab label="Desarrollo"/>
             <Tab label="Propiedades"/>
         </Tabs>
+    </Box>
     </Box>
   )
 }
