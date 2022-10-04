@@ -1,12 +1,20 @@
 import { AccountCircle, ArrowDropDown } from '@mui/icons-material';
-import { Box, Menu, MenuItem } from '@mui/material';
-import React, { useContext } from 'react';
+import { Box, Fade, Menu, MenuItem } from '@mui/material';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../../Constants/routes';
 
 import './index.css';
 
-const index = ({ children }) => (
+const index = ({ children }) => {
+    const [anchorEl,setAnchorEl]=useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick=({currentTarget})=>{
+        setAnchorEl(currentTarget);
+    }
+    const handleClose=()=>setAnchorEl(null);
+
+return(
   <Box className="container-view">
     <Box className="menu-lateral">
       <Box>
@@ -18,11 +26,11 @@ const index = ({ children }) => (
         </Box>
         <Box className='banner-name'>
           <p className="cta">[Nombre]</p>
-          <Box>
+          <Box onClick={handleClick} sx={{cursor:'pointer'}}> 
             <ArrowDropDown />
           </Box>
-          <Menu>
-            <MenuItem>Cerrar seción</MenuItem>
+          <Menu anchorEl={anchorEl} open={open} onClose={handleClose} TransitionComponent={Fade}>
+            <MenuItem onClick={handleClose}>Cerrar sesión</MenuItem>
           </Menu>
         </Box>
       </Box>
@@ -45,5 +53,6 @@ const index = ({ children }) => (
     <Box className="children-container">{children}</Box>
   </Box>
 );
+}
 
 export default index;
