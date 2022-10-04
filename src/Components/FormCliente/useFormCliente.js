@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Alert } from '@mui/material';
+import CLIENTE_SERVICE from '../../Services/cliente.services';
 
-export default () => {
+export default (setExpanded) => {
   useEffect(() => {
     if (inputsLLenos() && inputsValidos()) {
       setValidButton(false);
@@ -16,8 +18,18 @@ export default () => {
 
   const { vertical, horizontal, open } = confirm;
 
-  const handleClose = () => setConfirm([{ ...confirm, open: false }]);
+  const handleClose = () => setConfirm({ ...confirm, open: false });
   const [alertMessage, setAlertMessage] = useState();
+  const successMessage = (
+    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+      Exito al crear cliente
+    </Alert>
+  );
+  const errorMessage = (
+    <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+      Error al crear cliente
+    </Alert>
+  );
 
   const [inputsCliente, setInputsCliente] = useState({
     nombre: '',
@@ -42,17 +54,17 @@ export default () => {
 
   const [validaciones, setValidaciones] = useState({
     nombre: {
-      regex: '^[a-zA-ZñÑ ]+$',
+      regex: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan caracteres de la a-z',
     },
     aPaterno: {
-      regex: '^[a-zA-ZñÑ ]+$',
+      regex: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan caracteres de la a-z',
     },
     aMaterno: {
-      regex: '^[a-zA-ZñÑ ]+$',
+      regex: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan caracteres de la a-z',
     },
@@ -93,7 +105,7 @@ export default () => {
       message: 'Solo se aceptan valores numericos',
     },
     calle: {
-      regex: '^[a-zA-Z0-9ñÑ ]+$',
+      regex: '^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan valores alfanumericos',
     },
@@ -108,12 +120,12 @@ export default () => {
       message: 'Solo se aceptan valores alfanumericos',
     },
     pais: {
-      regex: '^[a-zA-ZñÑ ]+$',
+      regex: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan valores a-z',
     },
     estado: {
-      regex: '^[a-zA-ZñÑ ]+$',
+      regex: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan valores a-z',
     },
@@ -123,12 +135,12 @@ export default () => {
       message: 'El valor no corresponde a un CP',
     },
     colonia: {
-      regex: '[a-zA-Z0-9ñÑ ]+$',
+      regex: '[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan valores alfanumericos',
     },
     municipio: {
-      regex: '[a-zA-Z0-9ñÑ ]+$',
+      regex: '[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$',
       valid: true,
       message: 'Solo se aceptan valores alfanumericos',
     },
@@ -199,6 +211,41 @@ export default () => {
     }
     return aux;
   };
+  const limpiarInput = () =>
+    setInputsCliente({
+      nombre: '',
+      aPaterno: '',
+      aMaterno: '',
+      rol: 1,
+      number: '',
+      correo: '',
+      preferencia: 1,
+      nDesarrollos: '',
+      nPropiedades: '',
+      nUnidades: '',
+      calle: '',
+      nExterior: '',
+      nInterior: '',
+      pais: '',
+      estado: '',
+      cp: '',
+      colonia: '',
+      municipio: '',
+    });
+
+  const guardar = () => {
+    CLIENTE_SERVICE.addClient(inputsCliente)
+      .then(() => {
+        setAlertMessage(successMessage);
+        setConfirm({ ...confirm, open: true });
+        limpiarInput();
+        setExpanded();
+      })
+      .catch(() => {
+        setAlertMessage(errorMessage);
+        setConfirm({ ...confirm, open: true });
+      });
+  };
 
   return {
     vertical,
@@ -210,5 +257,6 @@ export default () => {
     setInputs,
     validaciones,
     validButton,
+    guardar,
   };
 };

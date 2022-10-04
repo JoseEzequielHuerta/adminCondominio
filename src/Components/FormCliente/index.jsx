@@ -65,7 +65,8 @@ const index = ({ expanded, setExpanded }) => {
     setInputs,
     validaciones,
     validButton,
-  } = useFormCliente();
+    guardar,
+  } = useFormCliente(setExpanded);
   return (
     <Box>
       <Snackbar
@@ -388,7 +389,9 @@ const index = ({ expanded, setExpanded }) => {
                 error={!validaciones.municipio.valid}
               />
             </Box>
-            <ButtonStyled disabled={validButton}>Guardar</ButtonStyled>
+            <ButtonStyled disabled={validButton} onClick={() => guardar()}>
+              Guardar
+            </ButtonStyled>
           </Box>
         </AccordionDetails>
       </Accordion>

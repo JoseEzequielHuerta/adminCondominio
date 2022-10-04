@@ -46,6 +46,7 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
     "@mui/system": "^5.10.8",
+    "axios": "^1.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-minimizer-webpack-plugin": "^4.2.0",
     "dotenv": "^16.0.2",
