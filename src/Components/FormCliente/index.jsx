@@ -6,10 +6,13 @@ import {
   Box,
   Snackbar,
   TextField,
+  Button,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import useFormCliente from './useFormCliente';
-import './index.css'
+import Roles from '../../Constants/roles';
+
+import './index.css';
 
 const CustomInput = styled(TextField)(() => ({
   '& label.Mui-disabled': {
@@ -34,9 +37,35 @@ const CustomInput = styled(TextField)(() => ({
   },
 }));
 
+const ButtonStyled = styled(Button)({
+  display: 'flex',
+  alignItems: 'center',
+  width: '200px',
+  height: '40px',
+  backgroundColor: '#A45012',
+  color: '#FFF',
+  borderRadius: '4px',
+  lineHeight: 1.5,
+  fontSize: '16px',
+  '&:hover': {
+    backgroundColor: '#FFF',
+    border: '1px solid #A45012',
+    color: '#A45012',
+  },
+});
+
 const index = ({ expanded, setExpanded }) => {
-  const { vertical, horizontal, open, handleClose, alertMessage } =
-    useFormCliente();
+  const {
+    vertical,
+    horizontal,
+    open,
+    handleClose,
+    alertMessage,
+    inputsCliente,
+    setInputs,
+    validaciones,
+    validButton,
+  } = useFormCliente();
   return (
     <Box>
       <Snackbar
@@ -61,6 +90,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.nombre}
+                onChange={setInputs}
+                helperText={
+                  validaciones.nombre.valid ? '' : validaciones.nombre.message
+                }
+                error={!validaciones.nombre.valid}
               />
               <CustomInput
                 placeholder="APELLIDO PATERNO"
@@ -70,6 +105,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.aPaterno}
+                onChange={setInputs}
+                helperText={
+                  validaciones.aPaterno.valid
+                    ? ''
+                    : validaciones.aPaterno.message
+                }
+                error={!validaciones.aPaterno.valid}
               />
               <CustomInput
                 placeholder="APELLIDO MATERNO"
@@ -79,6 +122,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.aMaterno}
+                onChange={setInputs}
+                helperText={
+                  validaciones.aMaterno.valid
+                    ? ''
+                    : validaciones.aMaterno.message
+                }
+                error={!validaciones.aMaterno.valid}
               />
               <CustomInput
                 placeholder="ROL"
@@ -88,7 +139,19 @@ const index = ({ expanded, setExpanded }) => {
                 select
                 SelectProps={{ native: true }}
                 focused
-              />
+                value={inputsCliente.rol}
+                onChange={setInputs}
+                helperText={
+                  validaciones.rol.valid ? '' : validaciones.rol.message
+                }
+                error={!validaciones.rol.valid}
+              >
+                {Roles.map(({ name, type }) => (
+                  <option key={name} value={type}>
+                    {name}
+                  </option>
+                ))}
+              </CustomInput>
             </Box>
             <Box className="container-inputs-cliente">
               <CustomInput
@@ -99,6 +162,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="number"
                 focused
                 size="small"
+                value={inputsCliente.number}
+                onChange={setInputs}
+                helperText={
+                  validaciones.number.valid ? '' : validaciones.number.message
+                }
+                error={!validaciones.number.valid}
               />
               <CustomInput
                 placeholder="CORREO ELECTRÓNICO"
@@ -108,6 +177,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="correo"
                 focused
                 size="small"
+                value={inputsCliente.correo}
+                onChange={setInputs}
+                helperText={
+                  validaciones.correo.valid ? '' : validaciones.correo.message
+                }
+                error={!validaciones.correo.valid}
               />
               <CustomInput
                 placeholder="PREFERENCIA DE CONTACTO"
@@ -117,7 +192,18 @@ const index = ({ expanded, setExpanded }) => {
                 select
                 SelectProps={{ native: true }}
                 focused
-              />
+                value={inputsCliente.preferencia}
+                onChange={setInputs}
+                helperText={
+                  validaciones.preferencia.valid
+                    ? ''
+                    : validaciones.preferencia.message
+                }
+                error={!validaciones.preferencia.valid}
+              >
+                <option value={1}>Llamada por teléfono</option>
+                <option value={2}>Correo electrónico</option>
+              </CustomInput>
             </Box>
             <Box className="container-inputs-cliente">
               <CustomInput
@@ -128,6 +214,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="number"
                 focused
                 size="small"
+                value={inputsCliente.nDesarrollos}
+                onChange={setInputs}
+                helperText={
+                  validaciones.nDesarrollos.valid
+                    ? ''
+                    : validaciones.nDesarrollos.message
+                }
+                error={!validaciones.nDesarrollos.valid}
               />
               <CustomInput
                 placeholder="TOTAL DE PROPIEDADES"
@@ -137,6 +231,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="number"
                 focused
                 size="small"
+                value={inputsCliente.nPropiedades}
+                onChange={setInputs}
+                helperText={
+                  validaciones.nPropiedades.valid
+                    ? ''
+                    : validaciones.nPropiedades.message
+                }
+                error={!validaciones.nPropiedades.valid}
               />
               <CustomInput
                 placeholder="TOTAL DE UNIDADES"
@@ -146,6 +248,13 @@ const index = ({ expanded, setExpanded }) => {
                 type="number"
                 focused
                 size="small"
+                onChange={setInputs}
+                helperText={
+                  validaciones.nUnidades.valid
+                    ? ''
+                    : validaciones.nUnidades.message
+                }
+                error={!validaciones.nUnidades.valid}
               />
             </Box>
             <p>Dirección</p>
@@ -158,6 +267,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.calle}
+                onChange={setInputs}
+                helperText={
+                  validaciones.calle.valid ? '' : validaciones.calle.message
+                }
+                error={!validaciones.calle.valid}
               />
               <CustomInput
                 placeholder="NUM EXT"
@@ -167,6 +282,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.nExterior}
+                onChange={setInputs}
+                helperText={
+                  validaciones.nExterior.valid
+                    ? ''
+                    : validaciones.nExterior.message
+                }
+                error={!validaciones.nExterior.valid}
               />
               <CustomInput
                 placeholder="NUM INT"
@@ -176,6 +299,14 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.nInterior}
+                onChange={setInputs}
+                helperText={
+                  validaciones.nInterior.valid
+                    ? ''
+                    : validaciones.nInterior.message
+                }
+                error={!validaciones.nInterior.valid}
               />
               <CustomInput
                 placeholder="PAIS"
@@ -185,6 +316,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.pais}
+                onChange={setInputs}
+                helperText={
+                  validaciones.pais.valid ? '' : validaciones.pais.message
+                }
+                error={!validaciones.pais.valid}
               />
               <CustomInput
                 placeholder="ESTADO"
@@ -194,6 +331,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.estado}
+                onChange={setInputs}
+                helperText={
+                  validaciones.estado.valid ? '' : validaciones.estado.message
+                }
+                error={!validaciones.estado.valid}
               />
             </Box>
             <Box className="container-inputs-cliente">
@@ -205,6 +348,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="number"
                 focused
                 size="small"
+                value={inputsCliente.cp}
+                onChange={setInputs}
+                helperText={
+                  validaciones.cp.valid ? '' : validaciones.cp.message
+                }
+                error={!validaciones.cp.valid}
               />
               <CustomInput
                 placeholder="COLONIA"
@@ -214,6 +363,12 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.colonia}
+                onChange={setInputs}
+                helperText={
+                  validaciones.colonia.valid ? '' : validaciones.colonia.message
+                }
+                error={!validaciones.colonia.valid}
               />
               <CustomInput
                 placeholder="MUNICIPIO"
@@ -223,8 +378,17 @@ const index = ({ expanded, setExpanded }) => {
                 type="text"
                 focused
                 size="small"
+                value={inputsCliente.municipio}
+                onChange={setInputs}
+                helperText={
+                  validaciones.municipio.valid
+                    ? ''
+                    : validaciones.municipio.message
+                }
+                error={!validaciones.municipio.valid}
               />
             </Box>
+            <ButtonStyled disabled={validButton}>Guardar</ButtonStyled>
           </Box>
         </AccordionDetails>
       </Accordion>
