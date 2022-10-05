@@ -1,4 +1,6 @@
-
+body{
+    background-color: rgb(202, 187, 187);
+}
 .container {    
     width: 550px;
     height: 620px;   
@@ -35,12 +37,11 @@ h4 {
 .imgEdi{
     margin-top: 100px;
     margin-left: 150px;
-    width: 550px;
-    height: 570px;
-  
-   
-
+    width: 750px;
+    height: 670px;
 }
+
+
 
 
    

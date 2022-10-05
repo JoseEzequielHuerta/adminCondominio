@@ -17,12 +17,12 @@ const index = ({ children }) => {
   return (
     <Box className="container-view">
       <Box className="menu-lateral">
-        <Box>
-          <h4>Ingesu App</h4>
+        <Box className='tittle'>
+          <h3>Inge-zu app <p>condominio</p></h3>          
         </Box>
         <Box>
           <Box className="banner">
-            <AccountCircle sx={{ fontSize: '40px' }} />
+            <AccountCircle sx={{ fontSize: '50px' }} />
           </Box>
           <Box className="banner-name">
             <p className="cta">[Nombre]</p>

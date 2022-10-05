@@ -36,14 +36,16 @@ const index = () => {
       <Tab val={0} />
       <Box
         className="container-cliente"
-        sx={{ borderBottom: '1px solid #000' }}
+        sx={{ borderBottom: '2px solid #fff' }}
       >
         <h3>Registro Clientes</h3>
         <ButtonStyled onClick={() => handleExpanded()}>
           <Add /> Nuevo Cliente
         </ButtonStyled>
       </Box>
-      <Box className="container-cliente">
+      <Box className="container-cliente"
+      sx={{ borderBottom: '2px solid #fff' }}
+      >
         <h3>Clientes</h3>
         <Buscador />
       </Box>

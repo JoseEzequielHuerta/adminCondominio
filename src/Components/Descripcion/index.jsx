@@ -1,16 +1,16 @@
 import React from 'react';
-import EdificioImage from '../../Assets/Images/edificio.jpeg';
+import EdificioImage from '../../Assets/Images/edificio.jpg';
 import './index.css';
 
 const index = () => (
-  <>
+  <box className='body-box'>
     <box className="container">
       <h2>Inguesu app</h2>
       <h4>Disminuye tu carga de trabajo y ten mas tiempo para ti</h4>
       <div className="text">
         ¿Tardas demasiado
         <br />
-        registrando ingresos y
+        registrando clientes y
         <br />
         conciliando pagos de
         <br />
@@ -18,7 +18,7 @@ const index = () => (
       </div>
       <br />
       <div className="text2">
-        Centraliza los pagos de tus residentes en una
+        Centraliza a todos tus residentes en una
         <br />
         sola herramienta y olvidate de los procesos
         <br />
@@ -31,7 +31,7 @@ const index = () => (
         <img className="imgEdi" src={EdificioImage} alt="Edificio" />
       </div>
     </div>
-  </>
+  </box>
 );
 
 export default index;

@@ -5,6 +5,7 @@ import { Add } from '@mui/icons-material';
 import MenuLateral from '../../Layouts/MenuLateral';
 import Tab from '../../Components/Tab';
 import NuevoCliente from '../../Components/NuevoCliente';
+import NuevoDesarrollo from '../../Components/FormDesarrollo'
 import CLIENTE_SERVICE from '../../Services/cliente.services';
 
 import './index.css';
@@ -56,7 +57,7 @@ const index = () => {
       <Tab val={1} />
       <Box
         className="container-desarrollo"
-        sx={{ borderBottom: '1px solid #000' }}
+        sx={{ borderBottom: '2px solid #fff' }}
       >
         <h3>Registro desarrollos</h3>
         <ButtonStyled onClick={() => handleExpanded()}>
@@ -77,7 +78,12 @@ const index = () => {
             nDesarrollos={nDesarrollos}
           />
         </Box>
-        <Box sx={{ width: '50%' }}>Desarrollo</Box>
+        <Box sx={{ width: '50%' }}>
+          <NuevoDesarrollo
+            expanded={expanded}
+            setExpanded={() => handleExpanded()}
+          />
+        </Box>
       </Box>
     </MenuLateral>
   );

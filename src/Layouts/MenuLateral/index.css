@@ -1,6 +1,7 @@
 .container-view{
     width: 100vw;
     display: flex;
+    background-color: rgb(209, 179, 236);
 }
 
 .menu-lateral{
@@ -9,36 +10,38 @@
     height: 100vh;
     left: 0;
     top: 0;
-    background-color: #FFF;
-    border-right: 1px solid #C7DEE6;
+    background-color: rgb(132, 132, 173);
+    border-right: 1px solid #b5dbe7;
     border-radius: 16px;
     padding-left: 53px;
     padding-top: 40px;
-}
+}    
 
 .children-container{
     position: relative;
     width: calc(100vw-253px);
     min-height: calc(100vh-30px);
     margin-left: 253px;
+    margin-right: 20px;
     padding: 50px;
 }
 
 .banner{
-    margin-top: 45px;
-    border-bottom: 1px solid #C7DEE6;
-    margin-right: 15px;
+    margin-top: 55px;
+    border-bottom: 3px solid #fff;
+    margin-right: 25px;
 }
 
 .banner-name{
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .cta{
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 22px;
+    line-height: 28px;
 }
 
 .container-link{
@@ -69,5 +72,15 @@ a{
 }
 
 .inactive .link-container p{
-    color: #000;
+    color: black;
+    ;
+}
+.tittle{
+    font-size: 22px;
+    color: #fff;
+}
+.tittle p{
+    font-size: 17px;
+    margin-top: 0;
+   margin-left: 25px;
 }

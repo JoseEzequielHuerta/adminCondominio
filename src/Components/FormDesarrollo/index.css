@@ -1,7 +1,10 @@
-.container-cliente{
+.container-nuevo-desarrollo{
+    padding: 15px;
+}
+
+.container-input-desarrollo{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
-    font-size: 25px;
 }
