@@ -11,6 +11,7 @@ import {
 import { styled } from '@mui/material/styles';
 import useFormCliente from './useFormCliente';
 import Roles from '../../Constants/roles';
+import ClientesActive from '../ActiveClients';
 
 import './index.css';
 
@@ -66,7 +67,13 @@ const index = ({ expanded, setExpanded }) => {
     validaciones,
     validButton,
     guardar,
+    activarClient,
+    inactivarClient,
+    clientesActive,
+    clientesInactive,
+    setClient,
   } = useFormCliente(setExpanded);
+  const check = true;
   return (
     <Box>
       <Snackbar
@@ -395,6 +402,32 @@ const index = ({ expanded, setExpanded }) => {
           </Box>
         </AccordionDetails>
       </Accordion>
+      <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Box sx={{ width: '45%' }}>
+          <ClientesActive
+            title="Clientes activos"
+            clientes={clientesActive}
+            check={check}
+            setExpanded={setExpanded}
+            setClient={setClient}
+            activarClient={activarClient}
+            inactivarCliente={inactivarClient}
+            setCliente={() => {}}
+          />
+        </Box>
+        <Box sx={{ width: '45%' }}>
+          <ClientesActive
+            title="Clientes pendientes/ inactivos"
+            clientes={clientesInactive}
+            check={check}
+            setExpanded={setExpanded}
+            setClient={setClient}
+            activarClient={activarClient}
+            inactivarCliente={inactivarClient}
+            setCliente={() => {}}
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };

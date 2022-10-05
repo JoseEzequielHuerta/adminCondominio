@@ -1,0 +1,21 @@
+.container-cliente{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.container-active{
+   width: 70px;
+}
+
+.pequeno-titulo{
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.pequeno-contenido{
+    font-size: 12px;
+    line-height: 14px;
+}

@@ -3,6 +3,9 @@ import { Alert } from '@mui/material';
 import CLIENTE_SERVICE from '../../Services/cliente.services';
 
 export default (setExpanded) => {
+  const [clientesActive, setClientesActive] = useState([]);
+  const [clientesInactive, setClientesInactive] = useState([]);
+
   useEffect(() => {
     if (inputsLLenos() && inputsValidos()) {
       setValidButton(false);
@@ -10,6 +13,7 @@ export default (setExpanded) => {
       setValidButton(true);
     }
   });
+
   const [confirm, setConfirm] = useState({
     open: false,
     vertical: 'bottom',
@@ -148,6 +152,51 @@ export default (setExpanded) => {
 
   const [validButton, setValidButton] = useState(true);
 
+  const activarClient = (cli) => {
+    CLIENTE_SERVICE.activeClient(cli._id)
+      .then(() => {
+        setAlertMessage(successMessage);
+        setConfirm({ ...confirm, open: true });
+        CLIENTE_SERVICE.getClientsActive()
+          .then((data) => setClientesActive(data))
+          .catch(() => {});
+        CLIENTE_SERVICE.getClientsInactive().then((data) =>
+          setClientesInactive(data),
+        );
+      })
+      .catch(() => {
+        setAlertMessage(errorMessage);
+        setConfirm({ ...confirm, open: true });
+      });
+  };
+
+  const inactivarClient = (cli) => {
+    CLIENTE_SERVICE.inactiveClient(cli._id)
+      .then(() => {
+        setAlertMessage(successMessage);
+        setConfirm({ ...confirm, open: true });
+        CLIENTE_SERVICE.getClientsActive()
+          .then((data) => setClientesActive(data))
+          .catch(() => {});
+        CLIENTE_SERVICE.getClientsInactive().then((data) =>
+          setClientesInactive(data),
+        );
+      })
+      .catch(() => {
+        setAlertMessage(errorMessage);
+        setConfirm({ ...confirm, open: true });
+      });
+  };
+
+  useEffect(() => {
+    CLIENTE_SERVICE.getClientsActive()
+      .then((data) => setClientesActive(data))
+      .catch(() => {});
+    CLIENTE_SERVICE.getClientsInactive()
+      .then((data) => setClientesInactive(data))
+      .catch(() => {});
+  }, []);
+
   const setInputs = ({ target }) => {
     setInputsCliente({
       ...inputsCliente,
@@ -213,6 +262,7 @@ export default (setExpanded) => {
   };
   const limpiarInput = () =>
     setInputsCliente({
+      _id: null,
       nombre: '',
       aPaterno: '',
       aMaterno: '',
@@ -231,20 +281,49 @@ export default (setExpanded) => {
       cp: '',
       colonia: '',
       municipio: '',
+      done: 2,
     });
 
+  const setClient = (cl) => setInputsCliente(cl);
+
   const guardar = () => {
-    CLIENTE_SERVICE.addClient(inputsCliente)
-      .then(() => {
-        setAlertMessage(successMessage);
-        setConfirm({ ...confirm, open: true });
-        limpiarInput();
-        setExpanded();
-      })
-      .catch(() => {
-        setAlertMessage(errorMessage);
-        setConfirm({ ...confirm, open: true });
-      });
+    if (inputsCliente._id) {
+      CLIENTE_SERVICE.updateClient(inputsCliente._id, inputsCliente)
+        .then(() => {
+          setAlertMessage(successMessage);
+          setConfirm({ ...confirm, open: true });
+          limpiarInput();
+          setExpanded();
+          CLIENTE_SERVICE.getClientsActive()
+            .then((data) => setClientesActive(data))
+            .catch(() => {});
+          CLIENTE_SERVICE.getClientsInactive().then((data) =>
+            setClientesInactive(data),
+          );
+        })
+        .catch(() => {
+          setAlertMessage(errorMessage);
+          setConfirm({ ...confirm, open: true });
+        });
+    } else {
+      CLIENTE_SERVICE.addClient(inputsCliente)
+        .then(() => {
+          setAlertMessage(successMessage);
+          setConfirm({ ...confirm, open: true });
+          limpiarInput();
+          setExpanded();
+          CLIENTE_SERVICE.getClientsActive()
+            .then((data) => setClientesActive(data))
+            .catch(() => {});
+          CLIENTE_SERVICE.getClientsInactive().then((data) =>
+            setClientesInactive(data),
+          );
+        })
+        .catch(() => {
+          setAlertMessage(errorMessage);
+          setConfirm({ ...confirm, open: true });
+        });
+    }
   };
 
   return {
@@ -258,5 +337,10 @@ export default (setExpanded) => {
     validaciones,
     validButton,
     guardar,
+    activarClient,
+    inactivarClient,
+    clientesActive,
+    clientesInactive,
+    setClient,
   };
 };
