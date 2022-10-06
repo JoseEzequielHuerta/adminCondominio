@@ -1,7 +1,7 @@
 import { AccountCircle, ArrowDropDown } from '@mui/icons-material';
 import { Box, Fade, Menu, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink,useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import routes from '../../Constants/routes';
 
 import './index.css';
@@ -14,10 +14,10 @@ const index = ({ children, name }) => {
     setAnchorEl(currentTarget);
   };
   const handleClose = () => setAnchorEl(null);
-  const logout=()=>{
-    sessionStorage.removeItem('token')
-    navigate('/')
-  }
+  const logout = () => {
+    sessionStorage.removeItem('token');
+    navigate('/');
+  };
 
   return (
     <Box className="container-view">
@@ -42,7 +42,7 @@ const index = ({ children, name }) => {
               onClose={handleClose}
               TransitionComponent={Fade}
             >
-              <MenuItem onClick={()=>logout()}>Cerrar sesión</MenuItem>
+              <MenuItem onClick={() => logout()}>Cerrar sesión</MenuItem>
             </Menu>
           </Box>
         </Box>

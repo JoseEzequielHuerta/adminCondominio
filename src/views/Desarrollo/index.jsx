@@ -9,6 +9,7 @@ import Tab from '../../Components/Tab';
 import NuevoCliente from '../../Components/NuevoCliente';
 import NuevoDesarrollo from '../../Components/FormDesarrollo';
 import CLIENTE_SERVICE from '../../Services/cliente.services';
+import DESARROLLO_SERVICE from '../../Services/desarrollo.services';
 
 import './index.css';
 
@@ -30,11 +31,15 @@ const ButtonStyled = styled(Button)({
 });
 
 const index = () => {
+  const [disabled, setDisabled] = useState(true);
   const [clientes, setClientes] = useState([]);
   const [name, setName] = useState('');
   const [cli, setCli] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [nDesarrollos, setNDesarrollos] = useState(0);
+  const [naDesarrolos, setNaDesarrolos] = useState(0);
+  const [desarrollodByClient, setdesarrollodByClient] = useState(null);
+  const [idClien, setIdClien] = useState(null);
   useEffect(() => {
     CLIENTE_SERVICE.getClients()
       .then((data) => setClientes(data))
@@ -48,6 +53,7 @@ const index = () => {
   useEffect(() => {
     if (cli) {
       setNDesarrollos(Number(cli.nDesarrollos));
+      setDisabled(false);
     } else {
       setNDesarrollos(0);
     }
@@ -65,6 +71,25 @@ const index = () => {
       setName(deToken.name);
     }
   }, []);
+  useEffect(() => {
+    if (cli) {
+      DESARROLLO_SERVICE.getDesarrollosByIdClient(cli._id)
+        .then((data) => {
+          setdesarrollodByClient(data);
+          if (data.length < nDesarrollos) {
+            setNaDesarrolos(data.length + 1);
+          } else {
+            setDisabled(true);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [expanded]);
+  useEffect(() => {
+    if (cli) {
+      setIdClien(cli._id);
+    }
+  });
   return (
     <MenuLateral name={name}>
       <Tab val={1} />
@@ -73,7 +98,7 @@ const index = () => {
         sx={{ borderBottom: '2px solid #fff' }}
       >
         <h3>Registro desarrollos</h3>
-        <ButtonStyled onClick={() => handleExpanded()}>
+        <ButtonStyled onClick={() => handleExpanded()} disabled={disabled}>
           <Add /> Nuevo desarrollo
         </ButtonStyled>
       </Box>
@@ -95,6 +120,8 @@ const index = () => {
           <NuevoDesarrollo
             expanded={expanded}
             setExpanded={() => handleExpanded()}
+            nDesarrollos={naDesarrolos}
+            idClien={idClien}
           />
         </Box>
       </Box>

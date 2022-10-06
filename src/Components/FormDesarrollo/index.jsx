@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Accordion,
   AccordionDetails,
@@ -95,7 +95,7 @@ export const ButtonStandardI = styled(Button)({
   },
 });
 
-const index = ({ expanded, setExpanded }) => {
+const index = ({ expanded, setExpanded, nDesarrollos, idClien }) => {
   const {
     inputDesarrollo,
     limpiarInput,
@@ -107,7 +107,9 @@ const index = ({ expanded, setExpanded }) => {
     setTipoAmenidad,
     setNombreAmendad,
     setNuAmenidad,
-  } = useFormDesarrollo(setExpanded);
+    validButton,
+    guardar,
+  } = useFormDesarrollo(setExpanded, idClien);
   const check = true;
   return (
     <Box>
@@ -124,6 +126,7 @@ const index = ({ expanded, setExpanded }) => {
                 id="nDesarrollo"
                 focused
                 size="small"
+                value={nDesarrollos}
               />
               <CustomInput
                 placeholder="NOMBRE DEL DESARROLLO"
@@ -422,7 +425,9 @@ const index = ({ expanded, setExpanded }) => {
               />
             ))}
           </Box>
-          <ButtonStandard>Guardar</ButtonStandard>
+          <ButtonStandard disabled={validButton} onClick={() => guardar()}>
+            Guardar
+          </ButtonStandard>
         </AccordionDetails>
       </Accordion>
     </Box>

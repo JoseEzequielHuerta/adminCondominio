@@ -61,7 +61,6 @@ const index = ({ clientes, setCliente, nDesarrollos }) => (
         value={nDesarrollos}
       />
     </Box>
-    <ButtonStyled>Guardar</ButtonStyled>
   </Box>
 );
 

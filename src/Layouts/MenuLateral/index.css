@@ -1,7 +1,8 @@
 .container-view{
     width: 100vw;
+    height: 100vh;
     display: flex;
-    background-color: rgb(209, 179, 236);
+    background-color: rgb(209, 179, 236);    
 }
 
 .menu-lateral{
@@ -11,7 +12,7 @@
     left: 0;
     top: 0;
     background-color: rgb(132, 132, 173);
-    border-right: 1px solid #b5dbe7;
+    border-right: 2px solid #fff;
     border-radius: 16px;
     padding-left: 53px;
     padding-top: 40px;
@@ -21,9 +22,8 @@
     position: relative;
     width: calc(100vw-253px);
     min-height: calc(100vh-30px);
-    margin-left: 253px;
-    margin-right: 20px;
-    padding: 50px;
+    margin-left: 283px;
+    margin-right: 20px;       
 }
 
 .banner{
@@ -40,7 +40,7 @@
 }
 
 .cta{
-    font-size: 22px;
+    font-size: 20px;
     line-height: 28px;
 }
 
@@ -72,8 +72,7 @@ a{
 }
 
 .inactive .link-container p{
-    color: black;
-    ;
+    color: black;    
 }
 .tittle{
     font-size: 22px;
@@ -82,5 +81,8 @@ a{
 .tittle p{
     font-size: 17px;
     margin-top: 0;
-   margin-left: 25px;
+    margin-left: 25px;
 }
+
+  
+  

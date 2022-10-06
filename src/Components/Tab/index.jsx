@@ -19,7 +19,7 @@ const index = ({ val }) => {
   return (
     <Box>
       <h2>Centro de cuentas</h2>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: '#fff' }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Clientes" />
           <Tab label="Desarrollo" />

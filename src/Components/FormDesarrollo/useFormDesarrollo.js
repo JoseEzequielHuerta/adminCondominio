@@ -1,6 +1,7 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import DESARROLLO_SERVICE from '../../Services/desarrollo.services';
 
-export default (setExpanded) => {
+export default (setExpanded, idClien) => {
   const [inputDesarrollo, setInputDesarrollo] = useState({
     _id: null,
     idClient: null,
@@ -21,6 +22,9 @@ export default (setExpanded) => {
     municipio: '',
     done: 2,
   });
+  useEffect(() => {
+    setInputDesarrollo({ ...inputDesarrollo, idClient: idClien });
+  }, [idClien]);
   const [amenidades, setAmenidades] = useState([]);
   const addAmenidad = () => {
     const aux = {
@@ -154,12 +158,77 @@ export default (setExpanded) => {
     },
   });
 
+  const inputsLLenos = () => {
+    let aux = true;
+    if (
+      inputDesarrollo.nombre === '' ||
+      inputDesarrollo.nPropiedaes === '' ||
+      inputDesarrollo.nUnidades === '' ||
+      inputDesarrollo.calle === '' ||
+      inputDesarrollo.nExterior === '' ||
+      inputDesarrollo.pais === '' ||
+      inputDesarrollo.estado === '' ||
+      inputDesarrollo.cp === '' ||
+      inputDesarrollo.ciudad === '' ||
+      inputDesarrollo.colonia === '' ||
+      inputDesarrollo.municipio === ''
+    ) {
+      aux = false;
+    }
+    return aux;
+  };
+
+  const inputsValidos = () => {
+    let aux = false;
+    if (
+      validaciones.nombre.valid &&
+      validaciones.nPropiedaes.valid &&
+      validaciones.nUnidades.valid &&
+      validaciones.calle.valid &&
+      validaciones.nExterior.valid &&
+      validaciones.nInterior.valid &&
+      validaciones.pais.valid &&
+      validaciones.estado.valid &&
+      validaciones.cp.valid &&
+      validaciones.ciudad.valid &&
+      validaciones.colonia.valid &&
+      validaciones.municipio.valid
+    ) {
+      aux = true;
+    }
+    return aux;
+  };
+
+  const [validButton, setValidButton] = useState(true);
+
+  useEffect(() => {
+    if (inputsLLenos() && inputsValidos()) {
+      setValidButton(false);
+    } else {
+      setValidButton(true);
+    }
+  });
+
   const setRegistros = ({ target }) => {
-    setInputDesarrollo({ ...inputDesarrollo, [target.id]: target.value });
-    const val = validaciones[target.id];
-    const valid = new RegExp(val.regex);
-    val.valid = valid.test(target.value);
-    setValidaciones({ ...validaciones, [target.id]: { ...val } });
+    if (target.name === 'cMatenimiento') {
+      setInputDesarrollo({
+        ...inputDesarrollo,
+        [target.name]: Number(target.value),
+      });
+    } else {
+      setInputDesarrollo({ ...inputDesarrollo, [target.id]: target.value });
+      const val = validaciones[target.id];
+      const valid = new RegExp(val.regex);
+      val.valid = valid.test(target.value);
+      setValidaciones({ ...validaciones, [target.id]: { ...val } });
+    }
+  };
+
+  const guardar = () => {
+    DESARROLLO_SERVICE.addDesarrollo(inputDesarrollo).then((data) => {
+      setExpanded();
+      limpiarInput();
+    });
   };
 
   return {
@@ -173,5 +242,7 @@ export default (setExpanded) => {
     setTipoAmenidad,
     setNuAmenidad,
     setNombreAmendad,
+    validButton,
+    guardar,
   };
 };
