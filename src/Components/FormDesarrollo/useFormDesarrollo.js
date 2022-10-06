@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import DESARROLLO_SERVICE from '../../Services/desarrollo.services';
+import AMENIDAD_SERVICE from '../../Services/amenidad.services';
 
 export default (setExpanded, idClien) => {
   const [inputDesarrollo, setInputDesarrollo] = useState({
-    _id: null,
     idClient: null,
     nombre: '',
     tipo: 1,
@@ -28,7 +28,6 @@ export default (setExpanded, idClien) => {
   const [amenidades, setAmenidades] = useState([]);
   const addAmenidad = () => {
     const aux = {
-      _id: null,
       nombre: '',
       tipo: 1,
       nAmenidades: 0,
@@ -60,7 +59,6 @@ export default (setExpanded, idClien) => {
   };
   const limpiarInput = () => {
     setInputDesarrollo({
-      _id: null,
       idClient: null,
       nombre: '',
       tipo: 1,
@@ -225,9 +223,23 @@ export default (setExpanded, idClien) => {
   };
 
   const guardar = () => {
-    DESARROLLO_SERVICE.addDesarrollo(inputDesarrollo).then((data) => {
+    DESARROLLO_SERVICE.addDesarrollo(inputDesarrollo).then(({data}) => {
+      const {_id,idClient}=data
       setExpanded();
       limpiarInput();
+      if(amenidades.length>0){
+        const am =
+          amenidades.map((amenidad)=>(
+            {
+              ...amenidad,
+              idClient,
+              idDesarrollo:_id,
+            }
+          ))
+        AMENIDAD_SERVICE.addAmenidades(am).then(()=>limpiarAmenidad())
+        .catch(()=>{})
+        
+      }
     });
   };
 

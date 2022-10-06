@@ -22,7 +22,7 @@ const index = () => (
           <MenuIcon />
         </TapAndPlayOutlinedIcon>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Ingue-zu app condominio
+          Admin condominio
         </Typography>
         <Link to="../login">
           <Button color="inherit">Iniciar</Button>
