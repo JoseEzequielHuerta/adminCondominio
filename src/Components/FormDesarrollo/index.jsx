@@ -8,7 +8,7 @@ import {
   RadioGroup,
   TextField,
   Radio,
-  Button
+  Button,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Add } from '@mui/icons-material';
@@ -20,82 +20,80 @@ import Amenidad from '../Amenidad';
 import './index.css';
 
 const CustomInput = styled(TextField)(() => ({
-    '& label.Mui-disabled': {
-      color: '#70A5B6',
+  '& label.Mui-disabled': {
+    color: '#70A5B6',
+  },
+  '& label.Mui-focused': {
+    color: '#2A4A66',
+  },
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-disabled fieldset': {
+      borderColor: '#C7DEE6',
     },
-    '& label.Mui-focused': {
-      color: '#2A4A66',
+    '& fieldset': {
+      borderColor: '#70A5B6',
     },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-disabled fieldset': {
-        borderColor: '#C7DEE6',
-      },
-      '& fieldset': {
-        borderColor: '#70A5B6',
-      },
-      '&:hover fieldset': {
-        borderColor: '#2A4A66',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#3E6884',
-      },
+    '&:hover fieldset': {
+      borderColor: '#2A4A66',
     },
-  }));
+    '&.Mui-focused fieldset': {
+      borderColor: '#3E6884',
+    },
+  },
+}));
 
-  export const CustomRadio = styled(Radio)(() => ({
+export const CustomRadio = styled(Radio)(() => ({
+  color: '#A45012',
+  '&.Mui-checked': {
     color: '#A45012',
-    '&.Mui-checked': {
-      color: '#A45012',
-    },
-  }));
-  export const ButtonStandard = styled(Button)({
-    width: '134px',
-    height: '40px',
-    backgroundColor: '#A45012',
-    border: '1px solid',
+  },
+}));
+export const ButtonStandard = styled(Button)({
+  width: '134px',
+  height: '40px',
+  backgroundColor: '#A45012',
+  border: '1px solid',
+  borderColor: '#A45012',
+  color: '#FFFFFF',
+  borderRadius: '4px',
+  lineHeight: 1.5,
+  fontSize: '16px',
+  '&:hover': {
+    backgroundColor: '#FFD9D4',
     borderColor: '#A45012',
-    color: '#FFFFFF',
-    borderRadius: '4px',
-    lineHeight: 1.5,
-    fontSize: '16px',
-    '&:hover': {
-      backgroundColor: '#FFD9D4',
-      borderColor: '#A45012',
-      color: '#FFF',
-    },
-    '&:disabled': {
-      backgroundColor: '#C7DEE6',
-      borderColor: '#C7DEE6',
-      color: '#FFF',
-    },
-  });
-  
-  export const ButtonStandardI = styled(Button)({
-    display: 'flex',
-    alignItems: 'center',
-    width: '158px',
-    height: '40px',
-    backgroundColor: '#A45012',
-    border: '1px solid',
+    color: '#FFF',
+  },
+  '&:disabled': {
+    backgroundColor: '#C7DEE6',
+    borderColor: '#C7DEE6',
+    color: '#FFF',
+  },
+});
+
+export const ButtonStandardI = styled(Button)({
+  display: 'flex',
+  alignItems: 'center',
+  width: '158px',
+  height: '40px',
+  backgroundColor: '#A45012',
+  border: '1px solid',
+  borderColor: '#A45012',
+  color: '#FFFFFF',
+  borderRadius: '4px',
+  lineHeight: 1.5,
+  fontFamily: 'Martel Sans',
+  fontSize: '16px',
+  '&:hover': {
+    backgroundColor: '#FFD9D4',
     borderColor: '#A45012',
-    color: '#FFFFFF',
-    borderRadius: '4px',
-    lineHeight: 1.5,
-    fontFamily: 'Martel Sans',
-    fontSize: '16px',
-    '&:hover': {
-      backgroundColor: '#FFD9D4',
-      borderColor: '#A45012',
-      color: '#FFF',
-    },
-    '&:disabled': {
-      backgroundColor: '#C7DEE6',
-      borderColor: '#C7DEE6',
-      color:'#FFF',
-    },
-  });
-
-
+    color: '#FFF',
+  },
+  '&:disabled': {
+    backgroundColor: '#C7DEE6',
+    borderColor: '#C7DEE6',
+    color: '#FFF',
+  },
+});
 
 const index = ({ expanded, setExpanded }) => {
   const {
@@ -117,9 +115,7 @@ const index = ({ expanded, setExpanded }) => {
         <AccordionSummary id="summary" />
         <AccordionDetails>
           <Box className="container-nuevo-desarrollo">
-            <p>
-              Datos del desarrollo
-            </p>
+            <p>Datos del desarrollo</p>
             <Box className="container-input-desarrollo">
               <CustomInput
                 placeholder="DESARROLLO"
@@ -158,7 +154,8 @@ const index = ({ expanded, setExpanded }) => {
                   validaciones.tipo.valid ? '' : validaciones.tipo.message
                 }
                 error={!validaciones.tipo.valid}
-                size="small">
+                size="small"
+              >
                 {TIPO_DESAROLLO.map(({ name, type }) => (
                   <option key={`option-des ${name}`} value={type}>
                     {name}
@@ -181,7 +178,8 @@ const index = ({ expanded, setExpanded }) => {
                 helperText={
                   validaciones.clase.valid ? '' : validaciones.clase.message
                 }
-                error={!validaciones.clase.valid}>
+                error={!validaciones.clase.valid}
+              >
                 {CLASE_DESAROLLO.map(({ name, type }) => (
                   <option key={`option-clas ${name}`} value={type}>
                     {name}
@@ -230,7 +228,8 @@ const index = ({ expanded, setExpanded }) => {
                   name="cMatenimiento"
                   row
                   value={inputDesarrollo.cMatenimiento}
-                  onChange={setRegistros}>
+                  onChange={setRegistros}
+                >
                   <FormControlLabel
                     value={1}
                     control={<CustomRadio />}
@@ -398,11 +397,13 @@ const index = ({ expanded, setExpanded }) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 marginBottom: '10px',
-              }}>
+              }}
+            >
               <p>Amenidades</p>
               <ButtonStandardI
                 sx={{ width: '200px !important' }}
-                onClick={() => addAmenidad()}>
+                onClick={() => addAmenidad()}
+              >
                 <Add />
                 Añadir amenidad
               </ButtonStandardI>

@@ -23,7 +23,7 @@ export default (setExpanded) => {
   });
   const [amenidades, setAmenidades] = useState([]);
   const addAmenidad = () => {
-    const aux= {
+    const aux = {
       _id: null,
       nombre: '',
       tipo: 1,
@@ -155,7 +155,7 @@ export default (setExpanded) => {
   });
 
   const setRegistros = ({ target }) => {
-   setInputDesarrollo({ ...inputDesarrollo, [target.id]: target.value });
+    setInputDesarrollo({ ...inputDesarrollo, [target.id]: target.value });
     const val = validaciones[target.id];
     const valid = new RegExp(val.regex);
     val.valid = valid.test(target.value);

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import TapAndPlayOutlinedIcon from '@mui/icons-material/TapAndPlayOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const index = () => (
   <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
       <Toolbar>
-        <IconButton
+        <TapAndPlayOutlinedIcon
           size="large"
           edge="start"
           color="inherit"
@@ -19,11 +20,13 @@ const index = () => (
           sx={{ mr: 2 }}
         >
           <MenuIcon />
-        </IconButton>
+        </TapAndPlayOutlinedIcon>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Inguesu app
+          Ingue-zu app condominio
         </Typography>
-        <Button color="inherit">Iniciar</Button>
+        <Link to="../login">
+          <Button color="inherit">Iniciar</Button>
+        </Link>
       </Toolbar>
     </AppBar>
   </Box>

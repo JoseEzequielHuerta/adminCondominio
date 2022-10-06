@@ -45,26 +45,24 @@ const CustomInput = styled(TextField)(() => ({
   },
 }));
 
-const index = ({ clientes, setCliente, nDesarrollos }) => 
-  (
-    <Box className="container-datos-cliente">
-      <p style={{ marginBottom: 0 }}>Datos del cliente</p>
-      <Box sx={{ marginTop: '20px', marginBottom: '20px' }}>
-        <SelectCliente clientes={clientes} getCliente={setCliente} />
-      </Box>
-      <Box sx={{ marginBottom: '20px' }}>
-        <CustomInput
-          label="NUMERO DE DESARROLLOS"
-          placeholder="NUMERO DE DESARROLLOS"
-          type="number"
-          sx={{ width: '100%' }}
-          focused
-          value={nDesarrollos}
-        />
-      </Box>
-      <ButtonStyled>Guardar</ButtonStyled>
+const index = ({ clientes, setCliente, nDesarrollos }) => (
+  <Box className="container-datos-cliente">
+    <p style={{ marginBottom: 0 }}>Datos del cliente</p>
+    <Box sx={{ marginTop: '20px', marginBottom: '20px' }}>
+      <SelectCliente clientes={clientes} getCliente={setCliente} />
     </Box>
-  );
-
+    <Box sx={{ marginBottom: '20px' }}>
+      <CustomInput
+        label="NUMERO DE DESARROLLOS"
+        placeholder="NUMERO DE DESARROLLOS"
+        type="number"
+        sx={{ width: '100%' }}
+        focused
+        value={nDesarrollos}
+      />
+    </Box>
+    <ButtonStyled>Guardar</ButtonStyled>
+  </Box>
+);
 
 export default index;

@@ -1,42 +1,40 @@
 import React, { ChangeEvent } from 'react';
 import { styled } from '@mui/material/styles';
-import { Box,TextField,IconButton } from '@mui/material';
+import { Box, TextField, IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import AMENIDADES from '../../Constants/amenidades';
-
 
 import './index.css';
 
 const CustomInput = styled(TextField)(() => ({
-    '& label.Mui-disabled': {
-      color: '#70A5B6',
+  '& label.Mui-disabled': {
+    color: '#70A5B6',
+  },
+  '& label.Mui-focused': {
+    color: '#2A4A66',
+  },
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-disabled fieldset': {
+      borderColor: '#C7DEE6',
     },
-    '& label.Mui-focused': {
-      color: '#2A4A66',
+    '& fieldset': {
+      borderColor: '#70A5B6',
     },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-disabled fieldset': {
-        borderColor: '#C7DEE6',
-      },
-      '& fieldset': {
-        borderColor: '#70A5B6',
-      },
-      '&:hover fieldset': {
-        borderColor: '#2A4A66',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#3E6884',
-      },
+    '&:hover fieldset': {
+      borderColor: '#2A4A66',
     },
-  }));
+    '&.Mui-focused fieldset': {
+      borderColor: '#3E6884',
+    },
+  },
+}));
 
-  export const ButtonIcon = styled(IconButton)({
-    color: '#A45012',
-    '&:hover': {
-      color: '#FFD9D4',
-    },
-  });
-
+export const ButtonIcon = styled(IconButton)({
+  color: '#A45012',
+  '&:hover': {
+    color: '#FFD9D4',
+  },
+});
 
 const index = ({
   i,
@@ -69,7 +67,8 @@ const index = ({
         select
         SelectProps={{ native: true }}
         value={tipe}
-        onChange={setInput}>
+        onChange={setInput}
+      >
         {AMENIDADES.map(({ name, type }) => (
           <option key={`option-ame ${name}`} value={type}>
             {name}

@@ -6,7 +6,7 @@ import routes from '../../Constants/routes';
 
 import './index.css';
 
-const index = ({ children }) => {
+const index = ({ children,name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = ({ currentTarget }) => {
@@ -17,15 +17,17 @@ const index = ({ children }) => {
   return (
     <Box className="container-view">
       <Box className="menu-lateral">
-        <Box className='tittle'>
-          <h3>Inge-zu app <p>condominio</p></h3>          
+        <Box className="tittle">
+          <h3>
+            Inge-zu app <p>condominio</p>
+          </h3>
         </Box>
         <Box>
           <Box className="banner">
             <AccountCircle sx={{ fontSize: '50px' }} />
           </Box>
           <Box className="banner-name">
-            <p className="cta">[Nombre]</p>
+            <p className="cta">{name}</p>
             <Box onClick={handleClick} sx={{ cursor: 'pointer' }}>
               <ArrowDropDown />
             </Box>

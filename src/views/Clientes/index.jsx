@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Add } from '@mui/icons-material';
+import {decodeToken} from 'react-jwt';
 import MenuLateral from '../../Layouts/MenuLateral';
 import Tab from '../../Components/Tab';
 import Buscador from '../../Components/Buscador';
 import FormCliente from '../../Components/FormCliente';
+
 
 import './index.css';
 
@@ -28,11 +31,24 @@ const ButtonStyled = styled(Button)({
 
 const index = () => {
   const [expanded, setExpanded] = useState(false);
+  const [name,setName]= useState('')
   const handleExpanded = () => {
     setExpanded(!expanded ? 'panel1' : false);
   };
+  const navigate = useNavigate()
+  useEffect(()=>{
+    const session = sessionStorage.getItem("token")
+    const deToken = decodeToken(session)
+    if(deToken===null){
+      navigate('/')
+    }
+    else{
+      setName(deToken.name)
+    }
+  },[])
+  
   return (
-    <MenuLateral>
+    <MenuLateral name={name}>
       <Tab val={0} />
       <Box
         className="container-cliente"
@@ -43,8 +59,9 @@ const index = () => {
           <Add /> Nuevo Cliente
         </ButtonStyled>
       </Box>
-      <Box className="container-cliente"
-      sx={{ borderBottom: '2px solid #fff' }}
+      <Box
+        className="container-cliente"
+        sx={{ borderBottom: '2px solid #fff' }}
       >
         <h3>Clientes</h3>
         <Buscador />

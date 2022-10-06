@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './index.css';
 import {
   Grid,
@@ -12,6 +13,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { LockOutlined as LockOutlinedIcon } from '@mui/icons-material';
 import fondo from '../../Assets/Images/fondo.jpeg';
+import AUTH_SERVICE from '../../Services/auth.services';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +54,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const index = () => {
+  const navigate = useNavigate()
+  const [vali,setVali]=useState(false)
   const [body, setBody] = useState({ email: '', password: '' });
+  const [validaciones, setValidaciones] = useState({
+    email: {
+      regex:
+        "^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\\.[a-zA-Z]+",
+      valid: true,
+      message: 'El correo debe tener formato valido',
+    },
+  });
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -60,9 +72,25 @@ const index = () => {
       ...body,
       [e.target.name]: e.target.value,
     });
+    if (e.target.name === 'email') {
+      const val = validaciones.email;
+      const valid = new RegExp(val.regex);
+      val.valid = valid.test(e.target.value);
+      setValidaciones({
+        ...validaciones,
+        email: { ...val },
+      });
+    }
   };
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    AUTH_SERVICE.login(body.email, body.password)
+      .then(({data}) => {
+        sessionStorage.setItem("token", data.token);
+        navigate('/clientes')
+      })
+      .catch((err)=>setVali(true));
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -90,6 +118,10 @@ const index = () => {
               name="email"
               value={body.email}
               onChange={handleChange}
+              helperText={
+                validaciones.email.valid ? '' : validaciones.email.message
+              }
+              error={!validaciones.email.valid}
             />
             <TextField
               fullWidth
@@ -108,11 +140,15 @@ const index = () => {
               color="secondary"
               className={classes.button}
               onClick={() => onSubmit()}
+              disabled={!validaciones.email.valid}
             >
               Iniciar
             </Button>
           </form>
         </div>
+        {
+          vali?<p>Las credenciales son incorrectas</p>:null
+        }
       </Container>
     </Grid>
   );

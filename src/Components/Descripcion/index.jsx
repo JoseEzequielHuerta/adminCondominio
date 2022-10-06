@@ -3,9 +3,9 @@ import EdificioImage from '../../Assets/Images/edificio.jpg';
 import './index.css';
 
 const index = () => (
-  <box className='body-box'>
+  <box className="body-box">
     <box className="container">
-      <h2>Inguesu app</h2>
+      <h2>Ingue-zu app</h2>
       <h4>Disminuye tu carga de trabajo y ten mas tiempo para ti</h4>
       <div className="text">
         ¿Tardas demasiado
