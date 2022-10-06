@@ -5,25 +5,19 @@ import './index.css';
 const index = () => (
   <box className="body-box">
     <box className="container">
-      <h2>Ingue-zu app</h2>
+      <h2>Admin condominio</h2>
       <h4>Disminuye tu carga de trabajo y ten mas tiempo para ti</h4>
       <div className="text">
         ¿Tardas demasiado
         <br />
-        registrando clientes y
-        <br />
-        conciliando pagos de
-        <br />
-        tus condominios?
+        registrando clientes
+        <br />y tus condominios?
       </div>
       <br />
       <div className="text2">
-        Centraliza a todos tus residentes en una
-        <br />
-        sola herramienta y olvidate de los procesos
-        <br />
-        manuales y los errores al realizar la conciliacion de pagos a fin de
-        mes.
+        Centraliza a todos tus residentes en una sola herramienta y olvidate de
+        los procesos manuales y los errores al realizar la conciliacion de pagos
+        a fin de mes.
       </div>
     </box>
     <div className="container2">

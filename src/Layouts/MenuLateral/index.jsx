@@ -24,7 +24,7 @@ const index = ({ children, name }) => {
       <Box className="menu-lateral">
         <Box className="tittle">
           <h3>
-            Inge-zu app <p>condominio</p>
+            Admin<p>condominio</p>
           </h3>
         </Box>
         <Box>

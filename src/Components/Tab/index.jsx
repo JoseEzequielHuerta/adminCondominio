@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './index.css';
 
 const index = ({ val }) => {
   const navigate = useNavigate();
@@ -20,10 +21,10 @@ const index = ({ val }) => {
     <Box>
       <h2>Centro de cuentas</h2>
       <Box sx={{ borderBottom: 1, borderColor: '#fff' }}>
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs className="tabs" value={value} onChange={handleChange}>
           <Tab label="Clientes" />
-          <Tab label="Desarrollo" />
-          <Tab label="Propiedades" />
+          <Tab className="tab2" label="Desarrollo" />
+          <Tab className="tab3" label="Propiedades" />
         </Tabs>
       </Box>
     </Box>

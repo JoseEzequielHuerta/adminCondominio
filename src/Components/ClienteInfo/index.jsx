@@ -71,8 +71,10 @@ const index = ({
           onClose={handleClose2}
           PaperProps={{
             style: {
+              display: 'flex !important',
+              flexDirection: 'column !important',
               maxHeight: 48 * 4.5,
-              width: '20ch',
+              width: '12ch',
             },
           }}
         >

@@ -104,7 +104,7 @@ const index = () => {
       </Box>
       <Box
         sx={{
-          margon: '20px',
+          margin: '20px',
           display: 'flex',
           justifyContent: 'space-evenly',
         }}

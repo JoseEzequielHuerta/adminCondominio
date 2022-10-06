@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(236, 207, 163);
+    background-color: rgb(209, 179, 236);
 }
 .container {    
     width: 550px;
@@ -14,22 +14,29 @@ body{
 
 h2{
     font-size: 50px;
+    font-family: cursive;
+    margin-left: 40px;
 }
 
-h4 {
-    font-size: 20px;
+h4 {    
+    font-size: 22px;
+    font-family: cursive;
 }
 
 .text {
-    font-size: 45px;
-    margin-left: 45px;
+    font-family: cursive;
+    font-size: 55px;
+    margin-left: 40px;
     margin-top: 20px;
     color: red;
 }
 
 .text2{    
-    font-size: 26px;
-    margin-top: 25px;
+    font-family: cursive;
+    font-size: 28px;
+    margin-top: 45px;
+    display: flex;
+    text-align: justify;
 }
 .container2 {    
    float: left;

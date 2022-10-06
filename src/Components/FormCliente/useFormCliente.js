@@ -96,17 +96,17 @@ export default (setExpanded) => {
     nDesarrollos: {
       regex: '^[0-9]{1,5}$',
       valid: true,
-      message: 'Solo se aceptan valores numericos',
+      message: 'Maximo 5 caracteres numericos',
     },
     nPropiedades: {
       regex: '^[0-9]{1,5}$',
       valid: true,
-      message: 'Solo se aceptan valores numericos',
+      message: 'Maximo 5 caracteres numericos',
     },
     nUnidades: {
       regex: '^[0-9]{1,5}$',
       valid: true,
-      message: 'Solo se aceptan valores numericos',
+      message: 'Maximo 5 caracteres numericos',
     },
     calle: {
       regex: '^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$',
