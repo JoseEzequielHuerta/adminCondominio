@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import {decodeToken} from 'react-jwt';
+import { decodeToken } from 'react-jwt';
 import { styled } from '@mui/material/styles';
 import { Add } from '@mui/icons-material';
 import MenuLateral from '../../Layouts/MenuLateral';
@@ -31,7 +31,7 @@ const ButtonStyled = styled(Button)({
 
 const index = () => {
   const [clientes, setClientes] = useState([]);
-  const [name,setName]= useState('')
+  const [name, setName] = useState('');
   const [cli, setCli] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [nDesarrollos, setNDesarrollos] = useState(0);
@@ -55,17 +55,16 @@ const index = () => {
   const handleExpanded = () => {
     setExpanded(!expanded ? 'panel1' : false);
   };
-  const navigate = useNavigate()
-  useEffect(()=>{
-    const session = sessionStorage.getItem("token")
-    const deToken = decodeToken(session)
-    if(deToken===null){
-      navigate('/')
+  const navigate = useNavigate();
+  useEffect(() => {
+    const session = sessionStorage.getItem('token');
+    const deToken = decodeToken(session);
+    if (deToken === null) {
+      navigate('/');
+    } else {
+      setName(deToken.name);
     }
-    else{
-      setName(deToken.name)
-    }
-  },[])
+  }, []);
   return (
     <MenuLateral name={name}>
       <Tab val={1} />

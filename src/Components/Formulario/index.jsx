@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const index = () => {
-  const navigate = useNavigate()
-  const [vali,setVali]=useState(false)
+  const navigate = useNavigate();
+  const [vali, setVali] = useState(false);
   const [body, setBody] = useState({ email: '', password: '' });
   const [validaciones, setValidaciones] = useState({
     email: {
@@ -85,11 +85,11 @@ const index = () => {
 
   const onSubmit = () => {
     AUTH_SERVICE.login(body.email, body.password)
-      .then(({data}) => {
-        sessionStorage.setItem("token", data.token);
-        navigate('/clientes')
+      .then(({ data }) => {
+        sessionStorage.setItem('token', data.token);
+        navigate('/clientes');
       })
-      .catch((err)=>setVali(true));
+      .catch((err) => setVali(true));
   };
 
   return (
@@ -146,9 +146,7 @@ const index = () => {
             </Button>
           </form>
         </div>
-        {
-          vali?<p>Las credenciales son incorrectas</p>:null
-        }
+        {vali ? <p>Las credenciales son incorrectas</p> : null}
       </Container>
     </Grid>
   );

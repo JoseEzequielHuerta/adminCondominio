@@ -6,7 +6,7 @@ import routes from '../../Constants/routes';
 
 import './index.css';
 
-const index = ({ children,name }) => {
+const index = ({ children, name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = ({ currentTarget }) => {
