@@ -6,8 +6,8 @@ Administrador de Condominios Surgue de un proyecto real, para llevar un control 
 El administrador podra navegar a travez de la pagina y podra llevar el control de las altas de los clientes dentro del fraccionamiento, podra agregar y editarla
 
 
-Usuario Admin
+Usuario Admin:
 holaironhack@gmail.com
 
-Contraseña Admin
+Contraseña Admin:
 ironhack
