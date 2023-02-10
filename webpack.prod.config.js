@@ -47,7 +47,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/, // Modulo para la importación de imagenes
+        test: /\.(png|jpg|gif|svg|jpeg)$/, // Modulo para la importación de imagenes
         use: [
           {
             loader: 'file-loader',
