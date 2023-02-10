@@ -9,5 +9,5 @@ El administrador podra navegar a travez de la pagina y podra llevar el control d
 Usuario Admin:
 holaironhack@gmail.com
 
-Contraseña Admin:
+Contraseña:
 ironhack
