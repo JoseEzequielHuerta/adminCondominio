@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { decodeToken } from 'react-jwt';
+import Construccion from '../../Assets/Images/construccion.jpg';
 import MenuLateral from '../../Layouts/MenuLateral';
 import Tab from '../../Components/Tab';
 
@@ -19,6 +20,9 @@ const index = () => {
   return (
     <MenuLateral name={name}>
       <Tab val={2} />
+      <div>
+        <img src={Construccion} alt="sitio" />
+      </div>
     </MenuLateral>
   );
 };

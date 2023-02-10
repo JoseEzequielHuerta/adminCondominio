@@ -6,7 +6,6 @@ import {
 } from '@mui/icons-material';
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
 import useClienteInfo from './useClienteInfo';
-
 import './index.css';
 
 const index = ({

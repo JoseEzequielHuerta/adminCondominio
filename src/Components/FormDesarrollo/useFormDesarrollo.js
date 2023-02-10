@@ -223,22 +223,19 @@ export default (setExpanded, idClien) => {
   };
 
   const guardar = () => {
-    DESARROLLO_SERVICE.addDesarrollo(inputDesarrollo).then(({data}) => {
-      const {_id,idClient}=data
+    DESARROLLO_SERVICE.addDesarrollo(inputDesarrollo).then(({ data }) => {
+      const { _id, idClient } = data;
       setExpanded();
       limpiarInput();
-      if(amenidades.length>0){
-        const am =
-          amenidades.map((amenidad)=>(
-            {
-              ...amenidad,
-              idClient,
-              idDesarrollo:_id,
-            }
-          ))
-        AMENIDAD_SERVICE.addAmenidades(am).then(()=>limpiarAmenidad())
-        .catch(()=>{})
-        
+      if (amenidades.length > 0) {
+        const am = amenidades.map((amenidad) => ({
+          ...amenidad,
+          idClient,
+          idDesarrollo: _id,
+        }));
+        AMENIDAD_SERVICE.addAmenidades(am)
+          .then(() => limpiarAmenidad())
+          .catch(() => {});
       }
     });
   };

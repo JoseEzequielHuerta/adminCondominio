@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
-import './index.css';
-
 const CustomInput = styled(TextField)(() => ({
   '& label.Mui-disabled': {
     color: '#70A5B6',

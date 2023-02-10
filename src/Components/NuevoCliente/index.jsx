@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import { Box, Button, TextField } from '@mui/material';
 import SelectCliente from '../SelcetCliente';
 
-import './index.css';
-
 const ButtonStyled = styled(Button)({
   display: 'flex',
   alignItems: 'center',
