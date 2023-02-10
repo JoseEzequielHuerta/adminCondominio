@@ -13,6 +13,7 @@ const App = () => (
     <Route path="/clientes" element={<Clientes />} />
     <Route path="/desarrollo" element={<Desarrollo />} />
     <Route path="/propiedades" element={<Propiedades />} />
+    <Route path="*" element={<Inicio />} />
   </Routes>
 );
 
